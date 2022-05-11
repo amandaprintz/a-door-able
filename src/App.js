@@ -78,10 +78,35 @@
       square.position.y === playerBox.position.y
     ) {
       goalBoxSpawn();
+      playerBox.score++;
+      playerScore.text = playerBox.score;
     } else if (square.position.x === 0) {
       console.log('Hejsan');
     }
   }
+
+  //score functionality
+
+  let playerScore;
+
+  function setup() {
+    const style = new PIXI.TextStyle({
+      fontFamily: 'Roboto',
+      fill: ['#ffffff'],
+      fontSize: 43,
+    });
+
+    playerBox.score = 0;
+
+    playerScore = new PIXI.Text(playerBox.score, style);
+
+    stage.addChild(playerScore);
+
+    playerScore.x = 750;
+    playerScore.y = 10;
+  }
+
+  setup();
 
   function onKeyDown(key) {
     if (key.keyCode === 38) {
