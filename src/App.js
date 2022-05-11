@@ -1,20 +1,3 @@
-// const Application = PIXI.Application;
-
-// const app = new Application({
-//   width: window.innerWidth,
-//   height: window.innerHeight,
-// });
-
-// // app.renderer.view.style.position = 'absolute';
-// document.body.appendChild(app.view);
-
-// const Graphics = PIXI.Graphics;
-
-// const rectangle = new Graphics();
-// rectangle.beginFill(0xaa33).drawRect(200, 200, 100, 100).endFill();
-
-// app.stage.addChild(rectangle);
-
 (function () {
   var renderer = PIXI.autoDetectRenderer(660, 660, {
     backgroundColor: 0x34495e,
@@ -42,6 +25,18 @@
 
   function update() {
     square.position.x -= 5;
+
+    if (playerBox.score >= 5) {
+      square.position.x -= 5.1;
+    } else if (playerBox.score >= 18) {
+      square.position.x -= 5.2;
+    } else if (playerBox.score >= 25) {
+      square.position.x -= 5.3;
+    } else if (playerBox.score >= 32) {
+      square.position.x -= 5.4;
+    } else if (playerBox.score >= 40) {
+      square.position.x -= 5.6;
+    }
 
     requestAnimationFrame(update);
   }
