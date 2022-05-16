@@ -10,18 +10,15 @@
   var boxWidth = renderer.width / 10;
   var boxHeight = renderer.height / 10;
 
-  var playerBox = new PIXI.Graphics();
+  //Sprite Fish
+  var playerBox = new PIXI.Sprite.from('../fish.png');
+  playerBox.width = 110;
+  playerBox.height = 110;
 
-  playerBox.beginFill(0x3498db);
-  playerBox.drawRect(0, 0, boxWidth, boxHeight);
-  playerBox.endFill();
-
-  var square = new PIXI.Graphics();
-  square.beginFill(0xff0000);
-  square.drawRect(0, 0, 50, 50);
-  square.endFill();
-  square.x = 700;
-  square.y = Math.floor(Math.random() * 600);
+  // Sprite Bubble
+  var square = new PIXI.Sprite.from('../bubble.svg');
+  square.width = 50;
+  square.height = 50;
 
   function update() {
     square.position.x -= 5;
