@@ -38,7 +38,6 @@ function update() {
   } else if (playerBox.score > 40) {
     square.position.x -= 8;
   }
-
   requestAnimationFrame(update);
 }
 
