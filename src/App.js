@@ -1,119 +1,142 @@
-(function () {
-  var renderer = PIXI.autoDetectRenderer(660, 660, {
-    backgroundColor: 0x34495e,
-    antialias: true,
-  });
-  document.body.appendChild(renderer.view);
+let app = new PIXI.Application({
+  width: 700,
+  height: 500,
+  antialias: true,
+});
 
-  var stage = new PIXI.Container();
+document.body.appendChild(app.view);
 
-  var boxWidth = renderer.width / 10;
-  var boxHeight = renderer.height / 10;
+const stage = new PIXI.Container();
+app.stage.addChild(stage);
 
-  var playerBox = new PIXI.Graphics();
+var boxWidth = app.screen.width / 10;
+var boxHeight = app.screen.height / 10;
 
-  playerBox.beginFill(0x3498db);
-  playerBox.drawRect(0, 0, boxWidth, boxHeight);
-  playerBox.endFill();
+//the fish
 
-  var square = new PIXI.Graphics();
-  square.beginFill(0xff0000);
-  square.drawRect(0, 0, 50, 50);
-  square.endFill();
-  square.x = 700;
-  square.y = Math.floor(Math.random() * 600);
+var playerBox = new PIXI.Graphics();
+playerBox.beginFill(0x3498db);
+playerBox.drawRect(0, 0, boxWidth, boxHeight);
+playerBox.endFill();
 
-  function update() {
-    square.position.x -= 5;
+//the bubble
 
-    if (playerBox.score >= 5) {
-      square.position.x -= 5.1;
-    } else if (playerBox.score >= 18) {
-      square.position.x -= 5.2;
-    } else if (playerBox.score >= 25) {
-      square.position.x -= 5.3;
-    } else if (playerBox.score >= 32) {
-      square.position.x -= 5.4;
-    } else if (playerBox.score >= 40) {
-      square.position.x -= 5.6;
-    }
+var square = new PIXI.Graphics();
+square.beginFill(0xff0000);
+square.drawRect(0, 0, 50, 50);
+square.endFill();
+square.x = 700;
+square.y = Math.floor(Math.random() * 600);
 
-    requestAnimationFrame(update);
+function update() {
+  square.position.x -= 5;
+
+  if (playerBox.score > 5) {
+    square.position.x -= 6;
+  } else if (playerBox.score > 25) {
+    square.position.x -= 7;
+  } else if (playerBox.score > 40) {
+    square.position.x -= 8;
   }
 
   requestAnimationFrame(update);
+}
 
-  stage.addChild(playerBox);
-  stage.addChild(square);
+requestAnimationFrame(update);
 
-  document.addEventListener('keydown', onKeyDown);
+stage.addChild(playerBox);
+stage.addChild(square);
 
-  goalBoxSpawn();
+document.addEventListener('keydown', onKeyDown);
 
-  animate();
+function animate() {
+  app.render(stage);
 
-  function animate() {
-    renderer.render(stage);
+  checkPosition();
+  requestAnimationFrame(animate);
+}
 
-    checkPosition();
-    requestAnimationFrame(animate);
+animate();
+
+function goalBoxSpawn() {
+  var randomY = Math.floor(Math.random() * 10 + 0);
+
+  square.position.x = 660;
+  square.position.y = boxHeight * randomY;
+}
+goalBoxSpawn();
+
+const gameOverScreen = new PIXI.Container();
+gameOverScreen.visible = false;
+app.stage.addChild(gameOverScreen);
+
+let sprite = new PIXI.Graphics();
+sprite.beginFill(0x000000);
+sprite.drawRect(0, 0, app.view.width, app.view.height);
+gameOverScreen.addChild(sprite);
+
+const style = new PIXI.TextStyle({
+  fontFamily: 'Roboto',
+  fill: ['#ffffff'],
+  fontSize: 43,
+});
+
+const text = 'GAME OVER';
+const styledText = new PIXI.Text(text, style);
+gameOverScreen.addChild(styledText);
+styledText.x = 230;
+styledText.y = 230;
+
+function checkPosition() {
+  if (
+    square.position.x > playerBox.position.x - boxWidth / 2 &&
+    square.position.x < playerBox.position.x + boxWidth / 2 &&
+    square.position.y === playerBox.position.y
+  ) {
+    goalBoxSpawn();
+    playerBox.score++;
+    playerScore.text = playerBox.score;
+  } else if (square.position.x === 0) {
+    stage.visible = false;
+    gameOverScreen.visible = true;
   }
+}
 
-  function goalBoxSpawn() {
-    var randomY = Math.floor(Math.random() * 10 + 0);
+//score functionality
 
-    square.position.x = 660;
-    square.position.y = boxHeight * randomY;
-  }
+let playerScore;
 
-  function checkPosition() {
-    if (
-      square.position.x > playerBox.position.x - boxWidth / 2 &&
-      square.position.x < playerBox.position.x + boxWidth / 2 &&
-      square.position.y === playerBox.position.y
-    ) {
-      goalBoxSpawn();
-      playerBox.score++;
-      playerScore.text = playerBox.score;
-    } else if (square.position.x === 0) {
-      console.log('Hejsan');
+function score() {
+  const style = new PIXI.TextStyle({
+    fontFamily: 'Roboto',
+    fill: ['#ffffff'],
+    fontSize: 43,
+  });
+
+  playerBox.score = 0;
+
+  playerScore = new PIXI.Text(playerBox.score, style);
+
+  stage.addChild(playerScore);
+
+  playerScore.x = 650;
+  playerScore.y = 10;
+}
+
+score();
+
+//Function to move the fish up and down
+
+function onKeyDown(key) {
+  if (key.keyCode === 38) {
+    if (playerBox.position.y != 0) {
+      playerBox.position.y -= boxHeight;
     }
   }
 
-  //score functionality
-
-  let playerScore;
-
-  function setup() {
-    const style = new PIXI.TextStyle({
-      fontFamily: 'Roboto',
-      fill: ['#ffffff'],
-      fontSize: 43,
-    });
-
-    playerBox.score = 0;
-
-    playerScore = new PIXI.Text(playerBox.score, style);
-
-    stage.addChild(playerScore);
-
-    playerScore.x = 750;
-    playerScore.y = 10;
-  }
-
-  setup();
-
-  function onKeyDown(key) {
-    if (key.keyCode === 38) {
-      if (playerBox.position.y != 0) {
-        playerBox.position.y -= boxHeight;
-      }
-    }
-
-    if (key.keyCode === 40) {
-      if (playerBox.position.y != renderer.height - boxHeight) {
-        playerBox.position.y += boxHeight;
-      }
+  if (key.keyCode === 40) {
+    if (playerBox.position.y != app.screen.height - boxHeight) {
+      playerBox.position.y += boxHeight;
     }
   }
-})();
+}
