@@ -1,21 +1,27 @@
 (function () {
   var renderer = PIXI.autoDetectRenderer(660, 660, {
-    backgroundColor: 0x34495e,
+    backgroundColor: 0xffff,
     antialias: true,
   });
   document.body.appendChild(renderer.view);
 
-  var stage = new PIXI.Container();
+  const app = new PIXI.Application({
+    width: 500,
+    height: 500,
+    transparent: false,
+    antialias: true,
+  });
 
-  var boxWidth = renderer.width / 10;
+  var stage = new PIXI.Container();
+  var boxWidth = renderer.width / 20;
   var boxHeight = renderer.height / 10;
 
-  var playerBox = new PIXI.Graphics();
+  // Sprite Fish
+  var playerBox = new PIXI.Sprite.from('../fish.png');
+  playerBox.width = 100;
+  playerBox.height = 100;
 
-  playerBox.beginFill(0x3498db);
-  playerBox.drawRect(0, 0, boxWidth, boxHeight);
-  playerBox.endFill();
-
+  // Add sprite Bubble
   var square = new PIXI.Graphics();
   square.beginFill(0xff0000);
   square.drawRect(0, 0, 50, 50);
