@@ -10,6 +10,8 @@ Add the installation instructions.
 
 # Changelog
 
+https://github.com/amandaprintz/a-door-able/pull/1 - Fixed our first structure
+
 -   [#1 - Add a link to each pull request with a descriptive line.](#1)
 
 # Code Review
