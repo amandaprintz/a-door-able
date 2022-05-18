@@ -14,19 +14,28 @@ var boxHeight = app.screen.height / 10;
 
 //the fish
 
-var playerBox = new PIXI.Graphics();
+/* var playerBox = new PIXI.Graphics();
 playerBox.beginFill(0x3498db);
 playerBox.drawRect(0, 0, boxWidth, boxHeight);
-playerBox.endFill();
+playerBox.endFill(); */
+
+var playerBox = new PIXI.Sprite.from('../fish.png');
+playerBox.width = 110;
+playerBox.height = 110;
 
 //the bubble
-
-var square = new PIXI.Graphics();
+/* var square = new PIXI.Graphics();
 square.beginFill(0xff0000);
 square.drawRect(0, 0, 50, 50);
 square.endFill();
 square.x = 700;
-square.y = Math.floor(Math.random() * 600);
+square.y = Math.floor(Math.random() * 600); */
+
+var square = new PIXI.Sprite.from('../bubble.svg');
+square.width = 50;
+square.height = 50;
+/* square.y = Math.floor(Math.random() * 600);
+ */
 
 function update() {
   square.position.x -= 5;
@@ -47,6 +56,29 @@ stage.addChild(playerBox);
 stage.addChild(square);
 
 document.addEventListener('keydown', onKeyDown);
+
+//score functionality
+
+let playerScore;
+
+function score() {
+  const style = new PIXI.TextStyle({
+    fontFamily: 'Roboto',
+    fill: ['#ffffff'],
+    fontSize: 43,
+  });
+
+  playerBox.score = 0;
+
+  playerScore = new PIXI.Text(playerBox.score, style);
+
+  stage.addChild(playerScore);
+
+  playerScore.x = 650;
+  playerScore.y = 10;
+}
+
+score();
 
 function animate() {
   app.render(stage);
@@ -100,29 +132,6 @@ function checkPosition() {
     gameOverScreen.visible = true;
   }
 }
-
-//score functionality
-
-let playerScore;
-
-function score() {
-  const style = new PIXI.TextStyle({
-    fontFamily: 'Roboto',
-    fill: ['#ffffff'],
-    fontSize: 43,
-  });
-
-  playerBox.score = 0;
-
-  playerScore = new PIXI.Text(playerBox.score, style);
-
-  stage.addChild(playerScore);
-
-  playerScore.x = 650;
-  playerScore.y = 10;
-}
-
-score();
 
 //Function to move the fish up and down
 
