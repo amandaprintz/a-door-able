@@ -4,6 +4,10 @@ let app = new PIXI.Application({
   antialias: true,
 });
 
+// background sound
+PIXI.sound.add('sound', 'resources/background.mp3');
+PIXI.sound.play('sound');
+
 document.body.appendChild(app.view);
 
 const stage = new PIXI.Container();
@@ -65,6 +69,7 @@ function goalBoxSpawn() {
 }
 goalBoxSpawn();
 
+// game over screen
 const gameOverScreen = new PIXI.Container();
 gameOverScreen.visible = false;
 app.stage.addChild(gameOverScreen);
@@ -75,16 +80,31 @@ sprite.drawRect(0, 0, app.view.width, app.view.height);
 gameOverScreen.addChild(sprite);
 
 const style = new PIXI.TextStyle({
-  fontFamily: 'Roboto',
-  fill: ['#ffffff'],
-  fontSize: 43,
+  fontFamily: 'Modak',
+  fill: ['#4A8B9F'],
+  fontSize: 50,
 });
 
 const text = 'GAME OVER';
 const styledText = new PIXI.Text(text, style);
 gameOverScreen.addChild(styledText);
 styledText.x = 230;
-styledText.y = 230;
+styledText.y = 150;
+
+const rerun = new PIXI.Sprite.from('../rerun.svg');
+gameOverScreen.addChild(rerun);
+rerun.width = 400;
+rerun.height = 100;
+rerun.x = 140;
+rerun.y = 230;
+rerun.buttonMode = true;
+rerun.interactive = true;
+rerun.on('click', onClick);
+gameOverScreen.addChild(rerun);
+
+function onClick() {
+  location.reload();
+}
 
 function checkPosition() {
   if (
@@ -107,9 +127,10 @@ let playerScore;
 
 function score() {
   const style = new PIXI.TextStyle({
-    fontFamily: 'Roboto',
-    fill: ['#ffffff'],
-    fontSize: 43,
+    fontFamily: 'Nova Script',
+    fill: ['#4A8B9F'],
+    fontSize: 50,
+    weight: 100,
   });
 
   playerBox.score = 0;
