@@ -1,5 +1,6 @@
+// the canvas
 let app = new PIXI.Application({
-  width: 700,
+  width: 710,
   height: 500,
   antialias: true,
 });
@@ -15,7 +16,7 @@ var boxHeight = app.screen.height / 10;
 const startPage = new PIXI.Container();
 app.stage.addChild(startPage);
 
-const image = new PIXI.Sprite.from('resources/bg.svg');
+const image = new PIXI.Sprite.from('resources/background.svg');
 startPage.addChild(image);
 image.width = app.screen.width;
 image.height = app.screen.height;
@@ -44,8 +45,8 @@ stageBackground.height = app.screen.height;
 //the fish
 
 const playerBox = new PIXI.Sprite.from('../fish.png');
-playerBox.width = 110;
-playerBox.height = 110;
+playerBox.width = 60;
+playerBox.height = 60;
 
 //the bubble
 
@@ -77,8 +78,9 @@ let playerScore;
 
 function score() {
   const style = new PIXI.TextStyle({
-    fontFamily: 'Roboto',
-    fontSize: 43,
+    fontFamily: 'Modak',
+    fontSize: 60,
+    fill: ['#05465A'],
   });
 
   playerBox.score = 0;
