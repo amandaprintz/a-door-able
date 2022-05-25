@@ -79,11 +79,11 @@ let playerScore;
 function score() {
   const style = new PIXI.TextStyle({
     fontFamily: 'Modak',
-    fontSize: 60,
+    fontSize: 80,
     fill: ['#05465A'],
   });
 
-  playerBox.score = 0;
+  playerBox.score = -1;
 
   playerScore = new PIXI.Text(playerBox.score, style);
 
@@ -125,7 +125,7 @@ gameOverScreen.addChild(sprite);
 const style = new PIXI.TextStyle({
   fontFamily: 'Modak',
   fill: ['#4A8B9F'],
-  fontSize: 50,
+  fontSize: 45,
 });
 
 const text = 'GAME OVER';
