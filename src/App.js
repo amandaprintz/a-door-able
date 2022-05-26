@@ -1,12 +1,12 @@
 //The canvas
-let app = new PIXI.Application({
+const app = new PIXI.Application({
   width: 710,
   height: 500,
   antialias: true,
 });
 
 //Background sound
-PIXI.sound.add('sound', 'resources/mermaid.mp3');
+PIXI.sound.add('sound', '/src/resources/mermaid.mp3');
 
 document.body.appendChild(app.view);
 
