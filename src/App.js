@@ -18,7 +18,7 @@ var boxHeight = app.screen.height / 10;
 const startPage = new PIXI.Container();
 app.stage.addChild(startPage);
 
-const image = new PIXI.Sprite.from('resources/instructions.svg');
+const image = new PIXI.Sprite.from('/src/resources/instructions.svg');
 startPage.addChild(image);
 image.width = app.screen.width;
 image.height = app.screen.height;
@@ -39,20 +39,20 @@ const stage = new PIXI.Container();
 stage.visible = false;
 app.stage.addChild(stage);
 
-const stageBackground = new PIXI.Sprite.from('resources/playbg.svg');
+const stageBackground = new PIXI.Sprite.from('/src/resources/playbg.svg');
 stage.addChild(stageBackground);
 stageBackground.width = app.screen.width;
 stageBackground.height = app.screen.height;
 
 //The fish
 
-const fish = new PIXI.Sprite.from('resources/fish.png');
+const fish = new PIXI.Sprite.from('/src/resources/fish.png');
 fish.width = 60;
 fish.height = 60;
 
 //The bubble
 
-const bubble = new PIXI.Sprite.from('resources/bubble.svg');
+const bubble = new PIXI.Sprite.from('/src/resources/bubble.svg');
 bubble.width = 50;
 bubble.height = 50;
 
@@ -140,7 +140,7 @@ gameOverScreen.addChild(styledText);
 styledText.x = 195;
 styledText.y = 130;
 
-const rerun = new PIXI.Sprite.from('resources/rerun.svg');
+const rerun = new PIXI.Sprite.from('/src/resources/rerun.svg');
 gameOverScreen.addChild(rerun);
 rerun.width = 400;
 rerun.height = 100;
