@@ -131,7 +131,7 @@ gameOverScreen.addChild(sprite);
 const style = new PIXI.TextStyle({
   fontFamily: 'Futura',
   fill: ['#4A8B9F'],
-  fontSize: 50,
+  fontSize: 45,
 });
 
 const text = 'GAME OVER';
