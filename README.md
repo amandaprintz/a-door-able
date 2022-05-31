@@ -6,7 +6,7 @@ Readme
 
 Group assignment where we were to create a game or an experience using using JavaScript. I the requirements we had to use a third-party WebGL framework, and we choose to create our game with Pixi.js. Our gameplay is simple and requires little to no effort. Steer the fish with the arrow keys on the dashboard and catch as many bubbles as you can.
 
-You can play the game [here.](https://bear-with-me.netlify.app/)
+You can play the game [here.](https://fishybubbles.netlify.app/)
 
 # Installation
 
@@ -36,7 +36,10 @@ https://localhost:8000
 
 -   _Commits excluding merges:_
 
-    -   [15 - Add a link to each pull request with a descriptive line.](#1)
+    -   [20 - Removed fonts](https://github.com/amandaprintz/a-door-able/commit/e1c4394d5433338e3405942f631bd16a038a34ea)
+    -   [19 - Deployment errors](https://github.com/amandaprintz/a-door-able/commit/6601a7f4c56534e43fd90f7ac66b6a7c7a876fa8)
+    -   [18 - Added favicon / changed title](https://github.com/amandaprintz/a-door-able/commitd4dea3ea8ec0ac4cc0a4f45f25b36572812408a7)
+    -   [17 - Moved index.html](https://github.com/amandaprintz/a-door-able/commit/33a18230c3daff9ca10284f349e924aec3c9e7a4)
     -   [16 - Edits start page/variables](https://github.com/amandaprintz/a-door-able/commit/fbdf57d0acda7be84da12c25947636cea7a40b6f)
     -   [15 - Fonts](https://github.com/amandaprintz/a-door-able/commit/f18722bc1eb17b819916c303991f0fa494c4a447)
     -   [14 - Stage edits](https://github.com/amandaprintz/a-door-able/commit/cf2fcd0316fa3ea3ff19f04837d9de1d5406bd14)
@@ -63,13 +66,13 @@ https://localhost:8000
 Tested by the following people:
 
 1. Johanna Jönsson
-2. Linnea Eriksson
-3. Jane Doe
-4. John Doe
+2. Linnéa Eriksson
+3. Hanna Rosenberg
+4. Alice Nyberg
 
 Tested by the following muggles (non-coders):
 
-1. Jane Doe
-2. John Doe
-3. Jane Doe
-4. John Doe
+1. Evelina Högsell
+2. Helen Karlsson
+3. Lisa Hulten
+4. Jonatan Sirak
