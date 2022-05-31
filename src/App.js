@@ -1,5 +1,3 @@
-import * as PIXI from 'pixi.js';
-
 //The canvas
 const app = new PIXI.Application({
   width: 710,
