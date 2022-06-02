@@ -32,6 +32,8 @@ php -S localhost:8000
 https://localhost:8000
 ```
 
+<i> (If your're using Visual Studio Code, the extension Live Server works just fine!) </i>
+
 # Changelog
 
 -   _Commits excluding merges:_
@@ -59,7 +61,16 @@ https://localhost:8000
 
 # Code Review
 
-1. `example.js:10-15` - Remember to think about X and this could be refactored using the amazing Y function.
+1. `General` - Why are you running this on a php-server? Your code isn’t PHP at all, it’s vanilla JS. LiveServer works just fine.
+2. `App.js` - A public folder and split files would make your code very readable, instead of being in a huge block. Consider object oriented-programming!
+3. `App.js` - Consider importing all your assets (sprites and sounds etc) in the beginning of your file using an app.loader to make your website run smoother.
+4. `App.js:21` - “image” is not a very readable name. Try using more descriptive names for your variables and constants!
+5. `App.js: 181-195` - Your website isn’t compatible with mobile devices, one reason is that you’re using “keydown” which doesn’t exist on mobile. Consider using another event for the listener to listen to.
+6. `General` - You can easily install pixi using npm instead as it adds more functionality.
+7. `App.js:13-14 114` - Don’t use var, use let instead!
+8. `General` - Great commentary through out, very easy to figure out what’s what.
+9. `App.js:151` - .on is pixi.js version of an event listener. Perhaps try using it on row 181-195.
+10. `App.js:74` - consider using pixi.ticker instead of requestanimationframe as it’s smoother and easier to use.
 
 # Testers
 
